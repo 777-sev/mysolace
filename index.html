@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>babybabe</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Pacifico&display=swap');
+
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fce4ec;
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f48fb1, #fce4ec);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .heart {
+    position: absolute;
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .heart > img {
+    width: 80px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .heart > img:hover {
+    transform: scale(1.2);
+  }
+
+  .message {
+    padding: 20px;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transform: translateY(100%);
+    transition: transform 1s ease-out;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .message.open {
+    transform: translateY(0);
+  }
+
+  .message h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: #e91e63;
+  }
+
+  .message p {
+    line-height: 1.8;
+    color: #555;
+    text-align: justify;
+    text-indent: 40px;
+  }
+
+  .message p:first-of-type {
+    text-indent: 0;
+  }
+
+  #messageState {
+    display: none;
+  }
+
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(0.9); }
+    75% { transform: scale(1.05); }
+  }
+
+  .heart img.beating {
+    animation: heartBeat 1.5s infinite ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    .message {
+      padding: 15px;
+    }
+
+    .message h1 {
+      font-size: 2rem;
+    }
+
+    .message p {
+      font-size: 0.9rem;
+      text-indent: 20px;
+    }
+
+    .heart > img {
+      width: 60px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .heart > img {
+      width: 50px;
+    }
+
+    .message h1 {
+      font-size: 1.8rem;
+    }
+
+    .message p {
+      font-size: 0.85rem;
+      text-indent: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <label>
+    <div class="heart">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/Love_Heart_SVG.svg" alt="Heart">
+    </div>
+    <input id="messageState" type="checkbox" />
+  </label>
+
+  <div class="message">
+    <h1>Hi, baby!</h1>
+    <p>
+      i just wanna say na i super love you, as in superrr! hehe :D i made this html thingy (kasama si google JADHJAHDJAHD) para lang makagawa nito for u. grabe, thank you so much for yesterday HEHEHE ang cute nun istg. nakaka-motivate po siya.
+    </p>
+    <p>
+      i’m soso proud of you, my future cpa! like, you’re really doing your best and i see all your hard work :D praying for God’s guidance para you’ll stay on the right path always. i know na success is just around the corner for you, and i’m so excited to see you reach it. i want to be there when you finally achieve it all, hopefully tayo pa rin by then (manifesting) but even if not, i’ll still be your #1 supporter. always rooting for you, baby!
+    </p>
+    <p>
+      i love you so so much, like love na love kita to infinity and beyond (pag inlove talaga nagiging corny eh HAHHAHAHHA) i hope na-feel mo talaga yun sa lahat ng ginagawa ko for you. thank you for being so patient with me and for handling all my kaartehan (i know it’s a lot sometimes TT i’m sorry, mahal). i swear, ikaw lang nakakatiis ng ganito. thank you for always trying to fix things pag may problem and for never giving up on us.
+    </p>
+    <p>
+      i love you so much, baby! never forget that okiii?
+    </p>
+    <p>
+      from sev abi <3
+    </p>
+  </div>
+</div>
+
+<script>
+  const messageState = document.getElementById("messageState");
+  const message = document.querySelector(".message");
+  const heartImage = document.querySelector(".heart > img");
+
+  messageState.addEventListener("change", () => {
+    if (messageState.checked) {
+      message.classList.add("open");
+      heartImage.classList.add("beating");
+      document.body.style.backgroundColor = "#f8bbd0";
+      setTimeout(() => {
+        heartImage.style.opacity = "0";
+      }, 500);
+    } else {
+      message.classList.remove("open");
+      heartImage.classList.remove("beating");
+      document.body.style.backgroundColor = "#fce4ec";
+      heartImage.style.opacity = "1";
+    }
+  });
+</script>
+
+</body>
+</html>
